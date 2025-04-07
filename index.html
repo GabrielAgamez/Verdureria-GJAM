@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verdureria GJAM</title>
+    <link rel="stylesheet" href="CSS/Estilos.css">
+</head>
+<body>
+    <header>
+        <h1>Verdureria GJAM</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#carrito">Carrito</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <input type="text" placeholder="Buscar verduras...">
+    </header>
+
+    <main>
+        <section id="inicio">
+            <h2>Bienvenido a nuestra tienda</h2>
+            <p>Ofrecemos las mejores verduras frescas a domicilio.</p>
+        </section>
+
+        <section id="productos">
+            <h2>Variedad de Verduras</h2>
+            <div class="producto">
+                <img src="IMG/Lechuga.jpg" alt="Lechuga">
+                <h3>Lechuga</h3>
+                <p>Precio: $100</p>
+                <button onclick="agregarAlCarrito('Lechuga', 100)">Agregar al carrito</button>
+            </div>
+            <div class="producto">
+                <img src="IMG/Tomate.jpg" alt="Tomate">
+                <h3>Tomate</h3>
+                <p>Precio: $2000</p>
+                <button onclick="agregarAlCarrito('Tomate', 2000)">Agregar al carrito</button>
+            </div>
+            <div class="producto">
+                <img src="IMG/Cebolla en Rama.jpg" alt="Cebolla rama">
+                <h3>Cebolla rama</h3>
+                <p>Precio: $100</p>
+                <button onclick="agregarAlCarrito('Cebolla rama', 100)">Agregar al carrito</button>
+            </div>
+            <div class="producto">
+                <img src="IMG/Ahuyama.jpeg" alt="Ahuyama">
+                <h3>Ahuyama</h3>
+                <p>Precio: $800</p>
+                <button onclick="agregarAlCarrito('Ahuyama', 800)">Agregar al carrito</button>
+            </div>
+            <div class="producto">
+                <img src="IMG/Espinaca.jpg" alt="Espinaca">
+                <h3>Espinaca</h3>
+                <p>Precio: $100</p>
+                <button onclick="agregarAlCarrito('Espinaca', 100)">Agregar al carrito</button>
+            </div>
+            <div class="producto">
+                <img src="IMG/Zanahoria.jpg" alt="Zanahoria">
+                <h3>Zanahoria</h3>
+                <p>Precio: $1.000</p>
+                <button onclick="agregarAlCarrito('Zanahoria', 1000)">Agregar al carrito</button>
+            </div>
+        </section>
+
+        <section id="carrito">
+            <h2>Carrito de Compras</h2>
+            <ul id="listaCarrito"></ul>
+            <p id="total">Total: $0.00</p>
+        </section>
+    </main>
+
+    <section id="descripcion">
+        <h2>Sobre Nosotros</h2>
+        <p>Somos una tienda comprometida con la frescura y calidad de nuestras verduras. ¡Compra en línea y recibe en la puerta de tu casa!</p>
+    </section>
+
+    <footer id="contacto">
+        <h3>Contacto</h3>
+        <p>Email: Agamezg30@gmail.com</p>
+        <p>Teléfono: +57 3225052241</p>
+    </footer>
+
+    <script>
+        let carrito = [];
+        let total = 0;
+
+        function agregarAlCarrito(nombre, precio) {
+            carrito.push({ nombre, precio });
+            total += precio;
+            actualizarCarrito();
+        }
+
+        function actualizarCarrito() {
+            const listaCarrito = document.getElementById('listaCarrito');
+            listaCarrito.innerHTML = '';
+            carrito.forEach(producto => {
+                const li = document.createElement('li');
+                li.textContent = `${producto.nombre} - $${producto.precio.toFixed(2)}`;
+                listaCarrito.appendChild(li);
+            });
+            document.getElementById('total').textContent = `Total: $${total.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
